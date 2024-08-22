@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+
+* {
+    font-family: 'Jua', Helvetica, Arial, sans-serif;
+    font-size: medium;
+    line-height: 1.3;
+
+    box-sizing: border-box;
+}
+
+:root {
+    --color-light-primary: #FFFFFF;
+    --color-light-secondary: #EEEEEE;
+    --color-light-teritary: #aaaaaa;
+    --color-light-fourthy: #bbbbbb;
+    --color-light-shadow: rgba(0, 0, 0, 0.25);
+    --color-light-font: rgb(33, 37, 41);
+    --color-main-blue: #534EFF;
+    --color-main-red: #FF4E4E;
+}
+
+body, html{
+    overflow-x: hidden !important;
+}
+
+i, svg, span{
+    pointer-events: none !important;
+}
