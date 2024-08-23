@@ -24,7 +24,7 @@
         <div>
             <div class="d-flex align-items-center">
                 @auth
-                    <p class="mb-0 me-2">{{ Auth::user()->name }}</p>
+                    <a href="{{ route('user.show', Auth::id()) }}" class="mb-0 me-2 sp-hidden-link">{{ Auth::user()->name }}</a>
                 @endauth
                 @guest
                     <p class="mb-0 me-2">Guest</p>

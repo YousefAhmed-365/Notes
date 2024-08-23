@@ -22,14 +22,14 @@
                 </div>
             @endif
         @endauth
-        <a href="{{ route('note.show', $note->id) }}" class="sp-hidden-link">
+        <a href="{{ route('note.show', $note->id) }}" class="sp-hidden-link sp-header">
             <h1>{{ $note->title }}</h1>
         </a>
         <hr class="sp-card-line">
         <div class="sp-card-inner">
             <div>
                 <p class="d-inline">By </p>
-                <a href="">{{ $note->user->name }}</a>
+                <a href="{{ route('user.show', $note->user_id) }}">{{ $note->user->name }}</a>
             </div>
             <p class="mt-2">{{ $note->note_content }}</p>
         </div>

@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,10 @@ Route::delete('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->na
 Route::post('/note/comment/store', [CommentController::class, 'store'])->name('note.comment.store')->middleware('auth');
 
 Route::delete('/note/comment/destroy/{comment}', [CommentController::class, 'destroy'])->name('note.comment.destroy')->middleware('auth');
+
+Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+
+Route::put('/user/edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 
 Route::get('/login', [AuthController::class, 'loginIndex'])->name('auth.loginIndex')->middleware('guest');
 

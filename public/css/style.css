@@ -80,9 +80,17 @@ body{
     background-color: rgba(0, 0, 0, 0.50);
 }
 
+.sp-header{
+    max-width: 90%;
+    display: inline-block;
+}
+
 .sp-hidden-link{
     text-decoration: none;
     color: var(--color-light-font);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 #navbar-section{
@@ -180,11 +188,14 @@ body{
     margin-bottom: 0;
 }
 
-
 .sp-icon-button{
     border: none !important;
 }
 
 .sp-icon-button:active{
     border: none !important;
+}
+
+#user-hero{
+    height: fit-content;
 }

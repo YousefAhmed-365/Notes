@@ -20,7 +20,7 @@
     <div class="px-2"><i class="fa-solid fa-user user-profile me-2"></i></div>
     <div class="sp-card-inner">
         <div class="d-flex align-items-center">
-            <a href="">{{ $comment->user->name }}</a>
+            <a href="{{ route('user.show', $comment->user_id) }}">{{ $comment->user->name }}</a>
         </div>
         <p class="mt-2">{{ $comment->comment_content }}</p>
     </div>
