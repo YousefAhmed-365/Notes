@@ -34,22 +34,37 @@
             <p class="mt-2">{{ $note->note_content }}</p>
         </div>
         <div class="d-flex justify-content-around mt-2">
-            <form action="" method="POST">
+            <form action="{{ route('note.like.toggle', $note->id) }}" method="POST">
                 @csrf
-                <div>
-                    <button type="submit" class="btn"><i class="fa-regular fa-heart"></i></button>
+                @method($note->likes()->where('user_id', auth()->id())->exists() ? 'DELETE' : 'POST')
+                <div class="sp-display-icon">
+                    @if($note->likes()->where('user_id', auth()->id())->exists())
+                        <button type="submit" class="btn sp-icon-button">
+                            <i class="fa-solid fa-heart"></i>
+                        </button>
+                    @else
+                        <button type="submit" class="btn sp-icon-button">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                    @endif
+                    <p>{{ Number::abbreviate(sizeof($note->likes)) }}</p>
+                </div>
+            </form>
+            <form action="{{ route('note.show', $note->id) }}" method="GET">
+                @csrf
+                <div class="sp-display-icon">
+                    <button type="submit" class="btn sp-icon-button">
+                        <i class="fa-regular fa-comment sp-icon-default"></i>
+                    </button>
+                    <p>{{ Number::abbreviate(sizeof($note->comments)) }}</p>
                 </div>
             </form>
             <form action="" method="POST">
                 @csrf
                 <div>
-                    <button type="submit" class="btn"><i class="fa-regular fa-comment"></i></button>
-                </div>
-            </form>
-            <form action="" method="POST">
-                @csrf
-                <div>
-                    <button type="submit" class="btn"><i class="fa-regular fa-share-from-square"></i></button>
+                    <button type="submit" class="btn sp-icon-button">
+                        <i class="fa-regular fa-share-from-square"></i>
+                    </button>
                 </div>
             </form>
         </div>

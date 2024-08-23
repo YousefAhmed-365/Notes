@@ -35,6 +35,7 @@
                     <p class="sp-error text-danger mt-2">{{ $message }}</p>
                 @enderror
             </div>
+            <p>Already have an account? <a href="{{ route('auth.login') }}">Log in</a>.</p>
             <button type="submit" class="btn btn-outline-dark">Register</button>
         </form>
     </div>

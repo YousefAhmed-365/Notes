@@ -170,3 +170,21 @@ body{
 .btn{
     transition: none !important;
 }
+
+.sp-display-icon{
+    display: flex;
+    align-items: center;
+}
+
+.sp-display-icon p{
+    margin-bottom: 0;
+}
+
+
+.sp-icon-button{
+    border: none !important;
+}
+
+.sp-icon-button:active{
+    border: none !important;
+}

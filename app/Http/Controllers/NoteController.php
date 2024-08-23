@@ -13,6 +13,7 @@ class NoteController extends Controller
 
         return view("show", compact("note", "hint"));
     }
+    
     public function store(Request $request){
         $validated = $request->validate([
             "title" => "required|min:1|max:32",

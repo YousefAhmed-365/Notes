@@ -15,6 +15,7 @@
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control @error('password') is-invalid @enderror">
             </div>
+            <p>Don't have an account? <a href="{{ route('auth.register') }}">Register</a>.</p>
             <button type="submit" class="btn btn-outline-dark">Login</button>
         </form>
     </div>

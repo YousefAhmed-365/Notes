@@ -1,10 +1,12 @@
 @extends("layouts.layout")
 
 @section("content")
-<form method="POST" action="{{ route('auth.logout') }}">
-    @csrf
-    <button type="submit">Logout</button>
-</form>
+@auth
+    <form method="POST" action="{{ route('auth.logout') }}">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
+@endauth
 <section id="create-note-section" class="sp-card-container mb-3">
     <div>
         @auth
@@ -15,7 +17,7 @@
                     <p class="mb-0">Write a note...</p>
                 </div>
                 <!-- <button class="btn btn-outline-dark" onclick="toggleModal(event)" sp-target="note-create-modal"><span><i
-                                    class="fa-solid fa-pen"></i></span></button> -->
+                                        class="fa-solid fa-pen"></i></span></button> -->
             </div>
             <div id="note-create-modal" class="sp-modal">
                 <div class="sp-card">
@@ -50,7 +52,7 @@
 </section>
 <section id="info-section">
     @if (session("query"))
-        <h3>Search Results for {{ session("query") }}...</h3>
+        <h3>Search Results for "{{ session("query") }}"...</h3>
     @endif
 </section>
 <section id="notes-section" class="sp-card-container">

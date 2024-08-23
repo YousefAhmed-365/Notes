@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\NoteController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,9 @@ Route::post('/note/store', [NoteController::class, 'store'])->name('note.store')
 
 Route::delete('/note/destroy/{note}', [NoteController::class, 'destroy'])->name('note.destroy')->middleware('auth');
 
+Route::post('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->name('note.like.toggle')->middleware('auth');
+
+Route::delete('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->name('note.like.toggle')->middleware('auth');
 
 Route::post('/note/comment/store', [CommentController::class, 'store'])->name('note.comment.store')->middleware('auth');
 
