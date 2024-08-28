@@ -175,6 +175,10 @@ body{
     top: 16px;
 }
 
+#user-profile-dropdown{
+    transform: translate3d(-65%, 0, 0) !important;
+}
+
 .btn{
     transition: none !important;
 }
@@ -182,6 +186,8 @@ body{
 .sp-display-icon{
     display: flex;
     align-items: center;
+    
+    width: 60px;
 }
 
 .sp-display-icon p{
@@ -196,6 +202,39 @@ body{
     border: none !important;
 }
 
+.dropdown-menu {
+    width: fit-content;
+    min-width: 0;
+}
+
+.sp-dropdown-menu-center{
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
 #user-hero{
-    height: fit-content;
+    height: fit-content;    
+}
+
+#navbar-expand-button{
+    display: none;
+}
+
+#navbar-expand-default{
+    display: block;
+}
+
+#navbar-expand-dropdown{
+    min-width: 256px;
+    padding-inline: 8px;
+}
+
+@media only screen and (max-width: 768px) {
+    #navbar-expand-button{
+        display: block;
+    }
+
+    #navbar-expand-default{
+        display: none;
+    }
 }

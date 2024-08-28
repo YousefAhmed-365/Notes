@@ -9,7 +9,7 @@ class CommentController extends Controller
 {
     public function store(Request $request){
         $validated = $request->validate([
-            "comment_content" => "required|min:3|max:256"
+            "comment_content" => "required|min:1|max:256"
         ]);
 
         $validated["user_id"] = $request["user_id"];
@@ -21,7 +21,7 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment){
         $comment->delete();
-        
+
         return redirect()->back()->with("success", "Comment deleted successfully.");
     }
 }

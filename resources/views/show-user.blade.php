@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <textarea type="text" name="user_description" style="resize: none;"
                             class="form-control sp-form-textarea-lg @error('user_description') is-invalid @enderror"
-                            placeholder="Description..."></textarea>
+                            placeholder="Description...">{{ $user->user_description }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-dark w-100"><span><i
                                 class="fa-solid fa-pen"></i></span></button>

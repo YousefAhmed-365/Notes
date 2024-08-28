@@ -33,7 +33,7 @@
             </div>
             <p class="mt-2">{{ $note->note_content }}</p>
         </div>
-        <div class="d-flex justify-content-around mt-2">
+        <div class="d-flex justify-content-evenly mt-2">
             <form action="{{ route('note.like.toggle', $note->id) }}" method="POST">
                 @csrf
                 @method($note->likes()->where('user_id', auth()->id())->exists() ? 'DELETE' : 'POST')
@@ -59,14 +59,23 @@
                     <p>{{ Number::abbreviate(sizeof($note->comments)) }}</p>
                 </div>
             </form>
-            <form action="" method="POST">
-                @csrf
+            <div>
                 <div>
-                    <button type="submit" class="btn sp-icon-button">
+                    <button class="btn sp-icon-button" onclick="toggleModal(event)" sp-target="note-share-modal-{{ $note->id }}">
                         <i class="fa-regular fa-share-from-square"></i>
                     </button>
                 </div>
-            </form>
+                <div id="note-share-modal-{{ $note->id }}" class="sp-modal">
+                    <div class="sp-card">
+                        <div class="mb-3">
+                            <input id="note-share-input" type="text" class="form-control" value="{{ route('note.show', $note->id) }}" disabled readonly>
+                        </div>
+                        <button type="submit" onclick="copyText(event)" sp-target="note-share-input" class="btn btn-outline-dark w-100">
+                            <span>Copy Link</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
         <hr class="sp-card-line-sm">
         @auth

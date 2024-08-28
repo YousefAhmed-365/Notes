@@ -1,23 +1,18 @@
 @extends("layouts.layout")
 
 @section("content")
-@auth
-    <form method="POST" action="{{ route('auth.logout') }}">
-        @csrf
-        <button type="submit">Logout</button>
-    </form>
-@endauth
 <section id="create-note-section" class="sp-card-container mb-3">
     <div>
         @auth
             <div class="sp-card d-flex align-items-center">
-                <div class="px-2"><i class="fa-solid fa-user user-profile me-2"></i></div>
+                <div class="px-2">
+                    <a href="{{ route('user.show', Auth::id()) }}" class="mb-0 me-2 sp-hidden-link"><i
+                            class="fa-solid fa-user user-profile me-2"></i></a>
+                </div>
                 <div id="create-note-button" class="sp-card-inner" onclick="toggleModal(event)"
                     sp-target="note-create-modal">
                     <p class="mb-0">Write a note...</p>
                 </div>
-                <!-- <button class="btn btn-outline-dark" onclick="toggleModal(event)" sp-target="note-create-modal"><span><i
-                                        class="fa-solid fa-pen"></i></span></button> -->
             </div>
             <div id="note-create-modal" class="sp-modal">
                 <div class="sp-card">
