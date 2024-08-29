@@ -27,6 +27,8 @@ Route::get('/notes/{note}', [NoteController::class, 'show'])->name('note.show');
 
 Route::post('/note/store', [NoteController::class, 'store'])->name('note.store')->middleware('auth');
 
+Route::put('/note/update/{note}', [NoteController::class, 'update'])->name('note.update')->middleware('auth');
+
 Route::delete('/note/destroy/{note}', [NoteController::class, 'destroy'])->name('note.destroy')->middleware('auth');
 
 Route::post('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->name('note.like.toggle')->middleware('auth');
@@ -34,6 +36,8 @@ Route::post('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->name
 Route::delete('/note/{note}/like/toggle', [LikeController::class, 'toggle'])->name('note.like.toggle')->middleware('auth');
 
 Route::post('/note/comment/store', [CommentController::class, 'store'])->name('note.comment.store')->middleware('auth');
+
+Route::put('/note/comment/update/{comment}', [CommentController::class, 'update'])->name('note.comment.update')->middleware('auth');
 
 Route::delete('/note/comment/destroy/{comment}', [CommentController::class, 'destroy'])->name('note.comment.destroy')->middleware('auth');
 

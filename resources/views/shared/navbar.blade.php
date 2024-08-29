@@ -42,7 +42,7 @@
                         class="mb-0 me-2 sp-hidden-link">{{ Auth::user()->name }}</a>
                 @endauth
                 @guest
-                    <p class="mb-0 me-2">Guest</p>
+                    <a href="{{ route('auth.loginIndex') }}" class="sp-hidden-link"><p class="mb-0 me-2">Guest</p></a>
                 @endguest
                 <i class="fa-solid fa-user user-profile"></i>
                 @auth

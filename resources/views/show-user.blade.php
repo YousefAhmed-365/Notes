@@ -14,22 +14,21 @@
                     </li>
                 </ul>
             </div>
-        @endif
-        <div id="user-edit-modal" class="sp-modal">
-            <div class="sp-card">
-                <form action="{{ route('user.edit', $user->id) }}" method="POST">
-                    @csrf
-                    @method("PUT")
-                    <div class="mb-3">
-                        <textarea type="text" name="user_description" style="resize: none;"
-                            class="form-control sp-form-textarea-lg @error('user_description') is-invalid @enderror"
-                            placeholder="Description...">{{ $user->user_description }}</textarea>
-                    </div>
-                    <button type="submit" class="btn btn-outline-dark w-100"><span><i
-                                class="fa-solid fa-pen"></i></span></button>
-                </form>
+            <div id="user-edit-modal" class="sp-modal">
+                <div class="sp-card">
+                    <form action="{{ route('user.edit', $user->id) }}" method="POST">
+                        @csrf
+                        @method("PUT")
+                        <div class="mb-3">
+                            <textarea type="text" name="user_description" style="resize: none;"
+                                class="form-control sp-form-textarea-lg @error('user_description') is-invalid @enderror"
+                                placeholder="Description...">{{ $user->user_description }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark w-100">Edit</button>
+                    </form>
+                </div>
             </div>
-        </div>
+        @endif
     @endauth
     <div class="d-flex align-items-center">
         <i class="fa-solid fa-user user-profile"></i>

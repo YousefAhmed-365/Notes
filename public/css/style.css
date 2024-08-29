@@ -216,6 +216,12 @@ body{
     height: fit-content;    
 }
 
+#navbar-expand-section{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #navbar-expand-button{
     display: none;
 }

@@ -2,7 +2,7 @@
     $hint = $hint ?? null;
 @endphp
 
-<div class="sp-card-container mb-3">
+<div class="sp-card-container mb-3 sp-animate-in">
     <div class="sp-card">
         @auth
             @if($note->user_id == Auth::id())
@@ -11,6 +11,10 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                     </button>
                     <ul class="dropdown-menu">
+                        <li>
+                            <button class="dropdown-item" onclick="toggleModal(event)"
+                                sp-target="note-edit-modal-{{ $note->id }}">Edit</button>
+                        </li>
                         <li>
                             <form action="{{ route('note.destroy', $note->id) }}" method="POST">
                                 @method('DELETE')
@@ -30,6 +34,9 @@
             <div>
                 <p class="d-inline">By </p>
                 <a href="{{ route('user.show', $note->user_id) }}">{{ $note->user->name }}</a>
+                @if ($note->created_at != $note->updated_at)
+                    <small>- edited</small>
+                @endif
             </div>
             <p class="mt-2">{{ $note->note_content }}</p>
         </div>
@@ -61,16 +68,19 @@
             </form>
             <div>
                 <div>
-                    <button class="btn sp-icon-button" onclick="toggleModal(event)" sp-target="note-share-modal-{{ $note->id }}">
+                    <button class="btn sp-icon-button" onclick="toggleModal(event)"
+                        sp-target="note-share-modal-{{ $note->id }}">
                         <i class="fa-regular fa-share-from-square"></i>
                     </button>
                 </div>
                 <div id="note-share-modal-{{ $note->id }}" class="sp-modal">
                     <div class="sp-card">
                         <div class="mb-3">
-                            <input id="note-share-input" type="text" class="form-control" value="{{ route('note.show', $note->id) }}" disabled readonly>
+                            <input id="note-share-input" type="text" class="form-control"
+                                value="{{ route('note.show', $note->id) }}" disabled readonly>
                         </div>
-                        <button type="submit" onclick="copyText(event)" sp-target="note-share-input" class="btn btn-outline-dark w-100">
+                        <button type="submit" onclick="copyText(event)" sp-target="note-share-input"
+                            class="btn btn-outline-dark w-100">
                             <span>Copy Link</span>
                         </button>
                     </div>
@@ -114,4 +124,27 @@
             @endif
         </div>
     </div>
+    @auth
+        @if ($note->user_id == Auth::id())
+            <div id="note-edit-modal-{{ $note->id }}" class="sp-modal">
+                <div class="sp-card">
+                    <form action="{{ route('note.update', $note->id) }}" method="POST">
+                        @csrf
+                        @method("PUT")
+                        <div class="mb-3">
+                            <input type="text" name="title" value="{{ $note->title }}"
+                                class="form-control @error('title') is-invalid @enderror" placeholder="Title">
+                        </div>
+                        <div class="mb-3">
+                            <textarea type="text" name="note_content" style="resize: none;"
+                                class="form-control sp-form-textarea-lg @error('note_content') is-invalid @enderror"
+                                placeholder="How's the wheather today?...">{{ $note->note_content }}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-outline-dark w-100"><span><i
+                                    class="fa-solid fa-pen"></i></span></button>
+                    </form>
+                </div>
+            </div>
+        @endif
+    @endauth
 </div>

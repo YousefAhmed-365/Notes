@@ -27,6 +27,17 @@ class NoteController extends Controller
         return redirect()->intended("/")->with("success", "Note created successfully.");
     }
 
+    public function update(Request $request, Note $note){
+        $validated = $request->validate([
+            "title" => "required|min:1|max:32",
+            "note_content" => "required|min:1|max:512"
+        ]);
+
+        $note->update($validated);
+
+        return redirect()->route("note.show", $note->id)->with("success", "Note edited successfully.");
+    }
+
     public function destroy(Note $note){
         $note->delete();
 
