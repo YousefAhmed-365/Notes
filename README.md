@@ -32,13 +32,13 @@ cd Notes
 
 composer install
 npm install
-npm run dev
 ```
 
 Then Copy all of `.env.example` content into `.env` file. Don't forget to update the `.env` file with the correct database information.
 
 Generate Application Key:
 ```Bash
+cp .env.example .env
 php artisan key:generate
 ```
 
